@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Speed Calculator</title>
+    <link rel="stylesheet" href="topspeed.css">
+</head>
+<body>
+    <div class="calculator">
+        <h2>100m Sprint Top Speed Calculator</h2>
+
+        <label for="timeInput">Enter your 100m time (in seconds, excluding reaction time):</label>
+        <input type="number" id="timeInput" step="0.01" min="1" required>
+
+        <label for="sprinterType">Select Sprinter Type:</label>
+        <select id="sprinterType">
+            <option value="blockStarts">Block Starts</option>
+            <option value="both">Both</option>
+            <option value="topSpeed">Top Speed</option>
+        </select>
+
+        <button onclick="calculateTopSpeed()">Calculate</button>
+
+        <h3 id="resultMin"></h3>
+    </div>
+
+    <script src="topspeed.js"></script>
+</body>
+</html>

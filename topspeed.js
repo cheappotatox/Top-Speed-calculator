@@ -3,8 +3,9 @@ function calculateTopSpeed() {
     const userTime = parseFloat(document.getElementById('timeInput').value);
     const sprinterType = document.getElementById('sprinterType').value;
 
-    if (isNaN(userTime) || userTime <= 0) {
-        document.getElementById('resultMin').textContent = "Please enter a valid time.";
+    // Check if the user time is greater than 15 seconds
+    if (isNaN(userTime) || userTime <= 0 || userTime >= 15) {
+        document.getElementById('resultMin').textContent = "Please enter a valid time less than 15 seconds.";
         return;
     }
 
@@ -23,7 +24,7 @@ function calculateTopSpeed() {
             minFactor = 0.97;
             maxFactor = 0.99;
             break;
-        case "both":
+        case "neutral":
             minFactor = 0.99;
             maxFactor = 1.01;
             break;

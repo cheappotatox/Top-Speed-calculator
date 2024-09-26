@@ -3,14 +3,19 @@ function calculateTopSpeed() {
     const userTime = parseFloat(document.getElementById('timeInput').value);
     const sprinterType = document.getElementById('sprinterType').value;
 
-    // Check if the user time is greater than 15 seconds
-    if (isNaN(userTime) || userTime <= 0 || userTime >= 15) {
-        document.getElementById('resultMin').textContent = "Please enter a valid time less than 15 seconds.";
+    // Check if the user entered a valid time
+    if (isNaN(userTime) || userTime <= 0) {
+        document.getElementById('resultMin').textContent = "Please enter a valid time.";
         return;
     }
 
-    // Calculate the value of k
-    const k = -0.01 * userTime + 1.17;
+    // Calculate the value of k, set k = 1.03 if time is more than 14 seconds
+    let k;
+    if (userTime > 14) {
+        k = 1.03;
+    } else {
+        k = -0.01 * userTime + 1.17;
+    }
 
     // Calculate the base top speed
     let topSpeed = (100 / userTime) * k * k;
@@ -24,7 +29,7 @@ function calculateTopSpeed() {
             minFactor = 0.97;
             maxFactor = 0.99;
             break;
-        case "neutral":
+        case "both":
             minFactor = 0.99;
             maxFactor = 1.01;
             break;
